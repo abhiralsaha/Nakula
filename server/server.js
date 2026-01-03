@@ -44,11 +44,6 @@ app.get('/', (req, res) => {
     res.send('Productivity App API is running'); // Server active
 });
 
-// Initialize Scheduler (Only for dedicated server, not serverless)
-if (require.main === module) {
-    const initScheduler = require('./services/scheduler');
-    initScheduler();
-}
 
 // Optimization: Reuse MongoDB connection if valid
 if (mongoose.connection.readyState !== 0) {
