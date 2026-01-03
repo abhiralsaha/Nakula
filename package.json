@@ -1,0 +1,10 @@
+{
+    "name": "nakula-root",
+    "version": "1.0.0",
+    "scripts": {
+        "vercel-build": "cd client && npm install && npm run build && cd ../server && npm install"
+    },
+    "engines": {
+        "node": "18.x"
+    }
+}
