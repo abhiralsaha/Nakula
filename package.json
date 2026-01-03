@@ -2,7 +2,8 @@
     "name": "nakula-root",
     "version": "1.0.0",
     "scripts": {
-        "vercel-build": "cd client && npm install && npm run build && cd ../server && npm install"
+        "install-app": "cd client && npm install && cd ../server && npm install",
+        "build": "cd client && npm install && npm run build"
     },
     "engines": {
         "node": "20.x"
