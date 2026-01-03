@@ -382,7 +382,7 @@ const Layout = ({ children }) => {
                     <div className="flex items-center justify-between mb-4 px-4 pt-4">
                         <button
                             onClick={() => setIsOpen(true)}
-                            className={`p-2 rounded-xl border ${isDark ? 'bg-zinc-900 border-zinc-800 text-white' : 'bg-white border-gray-200 text-black'}`}
+                            className={`p-2 rounded-xl border transition-colors ${isDark ? 'bg-zinc-800 border-zinc-700 text-white hover:bg-zinc-700' : 'bg-white border-gray-200 text-gray-900 hover:bg-gray-50'}`}
                         >
                             <Menu size={24} />
                         </button>
