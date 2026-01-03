@@ -44,10 +44,25 @@ app.get('/', (req, res) => {
     res.send('Productivity App API is running'); // Server active
 });
 
-// Initialize Scheduler
-const initScheduler = require('./services/scheduler');
-initScheduler();
+// Initialize Scheduler (Only for dedicated server, not serverless)
+if (require.main === module) {
+    const initScheduler = require('./services/scheduler');
+    initScheduler();
+}
 
-app.listen(PORT, () => {
-    console.log(`Server running on port ${PORT}`);
-});
+// Optimization: Reuse MongoDB connection if valid
+if (mongoose.connection.readyState !== 0) {
+    // console.log('Reusing existing MongoDB connection');
+} else {
+    connectDB();
+}
+
+// Export for Vercel
+module.exports = app;
+
+// Only listen if run directly
+if (require.main === module) {
+    app.listen(PORT, () => {
+        console.log(`Server running on port ${PORT}`);
+    });
+}
